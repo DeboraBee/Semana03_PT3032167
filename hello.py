@@ -4,7 +4,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<h1>Hello World</h1><h2>Disciplina PTBDSWS</h2>'
+    return '<h1><b>Avaliação contínua: Aula 030</b></h1><ul><li><a href="https://deborange.pythonanywhere.com/">Home</a></li><li><a href="https://deborange.pythonanywhere.com/user/Débora Laranjeira da Silva/PT3032167/IFSP">Identificação</a></li><li><a href="https://deborange.pythonanywhere.com/contextorequisicao">Contexto da requisição</a></li></ul>'
+
+@app.route('/user/<nome>/<prontuario>/<instituicao>')
+def identificacao(nome, prontuario, instituicao):
+    return f'<h1>Avaliação contínua: Aula 030</h1><h2>Aluno: {nome}</h2><h2>Prontuário: {prontuario}</h2><h2>Instituição: {instituicao}</h2><p><a href="https://deborange.pythonanywhere.com/">Voltar</a></p>'
 
 @app.route('/user/<name>')
 def user(name):
@@ -13,9 +17,10 @@ def user(name):
 from flask import request
 
 @app.route('/contextorequisicao')
-def contexto_requisicao():
-    user_agent = request.headers.get('User-Agent')
-    return '<p>Your browser is{}</p>' .format(user_agent)
+def contextorequisicao():
+    requisicao = request.headers.get('User-Agent')
+    IP = request.remote_addr
+    return f'<h1>Avaliação contínua: Aula 030</h1><h2>Seu navegador é: {requisicao}</h2><h2>O IP do computador remoto é: {IP}</h2><h2>O host da aplicação é: https://deborange.pythonanywhere.com/</h2><p><a href="https://deborange.pythonanywhere.com/">Voltar</a></p>'
 
 @app.route('/codigostatusdiferente')
 def cod_status_diferente():
