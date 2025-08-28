@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block page_content %}
+  {% if nome %}
+    <br>
+    <h1>Hello, {{nome}}!</h1>
+    <hr>
+  {% else %}
+    <br>
+    <h1>Hello, Stranger!</h1>
+    <hr>
+  {% endif %}
+{% endblock %}
